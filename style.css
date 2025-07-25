@@ -1,0 +1,56 @@
+
+
+
+button {
+  background-color: gray;
+  color: black;
+  border: none;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+button:hover {
+  background-color: #2980b9;
+}
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: lightsalmon;
+}
+
+/* Estilo do título */
+h1 {
+    margin-bottom: 120px;
+ margin-left: 200px;
+
+}
+
+/* Estilo do campo de entrada e botão */
+
+input[type="text"] {
+    flex: 5;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+li {
+    padding: 5px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: -19%;
+    
+}
+
