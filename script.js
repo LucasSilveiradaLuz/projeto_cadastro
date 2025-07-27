@@ -1,13 +1,11 @@
-const nome = document.getElementById("nome")
-const data = document.getElementById("data")
-const quarto = document.getElementById("quarto")
-const responsavel = document.getElementById("responsavel")
-const especificacoes = document.getElementById("especificacoes")
-const adicionarBotao = document.getElementById("button")
-const paciente = document.querySelector("div-main")
 
-adicionarBotao.addEventListener("click", cadastro);
-responsavel.addEventListener("keypress", function (e) {
+const paciente = document.querySelector(".form_grupo")
+const sexo = document.querySelector("radio-btn")
+const button = document.querySelector("submit")
+const quarto = document.getElementById("quarto")
+
+button.addEventListener("click", cadastro);
+paciente.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     cadastro();
   }
@@ -15,14 +13,27 @@ responsavel.addEventListener("keypress", function (e) {
 
 function cadastro(){
  
-const input = paciente
-  if (input.trim() !== "") {
-    const enviado = document.createElement("li");
-    enviado.innerHTML = ""
-    paciente.appendChild(enviado);
-
+const input = paciente 
+  if (paciente === "") {
+    alert("Por favor, preencha todos os campos.");
+    return;
   }
-}
+  if (quarto.length < 3) {
+    alert("O quarto deve ter pelo menos 3 dígitos.");
+    return;
+  }
+   else{
+      const enviado = document.createElement("li");
+    enviado.innerHTML = ""
+    input.appendChild(enviado);
+   }
+console.log(paciente)
+ 
+  }
+    
+  
+
+
 
 
 
