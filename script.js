@@ -20,6 +20,9 @@ localStorage.setItem('responsavel',responsavel)
 localStorage.setItem('genero',genero)
 let especificacao = document.querySelector('input[name="especificacao"]:checked').value;
 localStorage.setItem('especificacao',especificacao)
+//trocar especificação para neuroatípico                 
+//fazer campo de alergias:sim e não,se sim, abrir campo de texto para especificar 
+
 //Verifica se os campos estão preenchidos 
  if (!nome ||!sobrenome ||!dataDeNascimento || !responsavel || !genero ||!especificacao) {
 
