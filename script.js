@@ -55,25 +55,38 @@ function cadastro(e) {
   // Limpa os campos do formulário
   form.reset();
 
-  // Remove seleção manualmente dos radios (caso algum navegador não limpe)
-  document.appendChild('input[type="radio"]').forEach(radio => radio.checked = false);
-  resposta.appendChild("afterend", `<li>Nome: ${nome} </li>`)
-  resposta.appendChild("afterend", `<li>Data De Nascimento:${dataDeNascimento}</li>`)
-  resposta.appendChild("afterend", `<li>Quarto: ${quarto}</li>`)
-  resposta.appendChild("afterend", `<li>responsavel: ${responsavel}</li>`)
+
+let li = document.createElement("li");
+li.innerHTML = `
+  <span>Nome: ${nome}</span> <br>
+  <span>Sobrenome: ${sobrenome}</span> <br>
+  <span>Data de Nascimento: ${dataDeNascimento}</span> <br>
+  <span>Responsável: ${responsavel}</span> <br>
+  <span>Quarto: ${quarto}</span> <br>
+  <span>Gênero: ${genero}</span> <br>
+  <span>Alergias: ${alergia === "sim" ? alergiaDetalhe : "Sem alergias"}</span> <br>
+  <span>Especificações: ${
+    especificacao === "neuroatipico" ? neuroatipicoDetalhe :
+    especificacao === "60mais" ? "60 anos ou +" :
+    "Nenhuma"
+  }</span> <br>
+`;
+
+resposta.appendChild(li);
+
 
   
   if (genero == "feminino") {
     
-    resposta.appendChild("beforeend", `<span>Gênero: Feminino</span>`)
+    resposta.appendChild( li)
   }
   else if (genero.checked) {
     
-    resposta.appendChild("beforeend", `<span>Gênero: Masculino</span>`)
+    resposta.appendChild(li)
   }
   else {
     
-    resposta.appendChild("beforeend", `<span>Gênero: Outro</span>`)
+    resposta.appendChild(li)
   }
 
  
@@ -86,7 +99,7 @@ function cadastro(e) {
   if(alergia === "nao"){
      arr.push("Sem alergias")
   }
-   resposta.appendChild( `<li>Alergias: ${arr}</li>`)
+   resposta.appendChild( `<span>Alergias: ${arr}</span>`)
 
   const arr2 = []
   if (especificacao === "neuroatipico") {
@@ -122,15 +135,6 @@ document.querySelectorAll('input[name="especificacao"]').forEach(function (radio
     radio.addEventListener("change", function () {
       document.getElementById("neuroatipicoDetalhe").style.display = "none";
 
-
     });
   }
 });
-
-
-
-// let spanNome = document.createElement("span")
-// spanNome.innerHTML = nome
-// let lista = document.createElement("li")
-// lista.appendChild(`<span> ola </span>`)
-// resposta.appendChild(lista)
