@@ -56,24 +56,24 @@ function cadastro(e) {
   form.reset();
 
   // Remove seleção manualmente dos radios (caso algum navegador não limpe)
-  document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
-  resposta.insertAdjacentHTML("afterend", `<li>Nome: ${nome} </li>`)
-  resposta.insertAdjacentHTML("afterend", `<li>Data De Nascimento:${dataDeNascimento}</li>`)
-  resposta.insertAdjacentHTML("afterend", `<li>Quarto: ${quarto}</li>`)
-  resposta.insertAdjacentHTML("afterend", `<li>responsavel: ${responsavel}</li>`)
+  document.appendChild('input[type="radio"]').forEach(radio => radio.checked = false);
+  resposta.appendChild("afterend", `<li>Nome: ${nome} </li>`)
+  resposta.appendChild("afterend", `<li>Data De Nascimento:${dataDeNascimento}</li>`)
+  resposta.appendChild("afterend", `<li>Quarto: ${quarto}</li>`)
+  resposta.appendChild("afterend", `<li>responsavel: ${responsavel}</li>`)
 
   
   if (genero == "feminino") {
     
-    resposta.insertAdjacentHTML("beforeend", `<li>Gênero: Feminino</li>`)
+    resposta.appendChild("beforeend", `<span>Gênero: Feminino</span>`)
   }
   else if (genero.checked) {
     
-    resposta.insertAdjacentHTML("beforeend", `<li>Gênero: Masculino</li>`)
+    resposta.appendChild("beforeend", `<span>Gênero: Masculino</span>`)
   }
   else {
     
-    resposta.insertAdjacentHTML("beforeend", `<li>Gênero: Outro</li>`)
+    resposta.appendChild("beforeend", `<span>Gênero: Outro</span>`)
   }
 
  
@@ -86,7 +86,7 @@ function cadastro(e) {
   if(alergia === "nao"){
      arr.push("Sem alergias")
   }
-   resposta.insertAdjacentHTML("beforeend", `<li>Alergias: ${arr}</li>`)
+   resposta.appendChild( `<li>Alergias: ${arr}</li>`)
 
   const arr2 = []
   if (especificacao === "neuroatipico") {
@@ -104,7 +104,7 @@ function cadastro(e) {
 
 
 
-  resposta.insertAdjacentHTML("beforeend", `<li>Especificações: ${arr2}</li>`)
+  resposta.appendChild( `<span>Especificações: ${arr2}</span>`)
 
 
 }
@@ -126,3 +126,11 @@ document.querySelectorAll('input[name="especificacao"]').forEach(function (radio
     });
   }
 });
+
+
+
+// let spanNome = document.createElement("span")
+// spanNome.innerHTML = nome
+// let lista = document.createElement("li")
+// lista.appendChild(`<span> ola </span>`)
+// resposta.appendChild(lista)
