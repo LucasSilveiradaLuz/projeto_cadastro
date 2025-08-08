@@ -80,7 +80,7 @@ function cadastro(e) {
   let checkedCount2 = 0
   const arr = []
    if(alergia === "sim"){
-    arr.push("Sim")
+    arr.push(alergiaDetalhe)
 
   }
   if(alergia === "nao"){
@@ -90,7 +90,7 @@ function cadastro(e) {
 
   const arr2 = []
   if (especificacao === "neuroatipico") {
-    arr2.push("Neuroátipico")
+    arr2.push(neuroatipicoDetalhe)
     checkedCount2++;
   }
   if (especificacao === "60mais") {
