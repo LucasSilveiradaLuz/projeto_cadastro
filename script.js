@@ -1,22 +1,52 @@
+// Obtém o formulário e a lista onde os cadastros serão exibidos 
 const form = document.getElementById("form");
-const lista = document.getElementById("lista"); // Adicione uma <ul id="lista"></ul> no HTML para ver a mensagem
+const resposta = document.getElementById("ul");
 
+// Adiciona evento ao formulário para executar a função cadastro ao enviar
 form.addEventListener("submit", cadastro);
 
 function cadastro(e) {
+  // Impede o envio padrão do formulário (recarregar página)
   e.preventDefault();
 
+  // Captura valores dos campos de texto
   const nome = document.getElementById("nome").value.trim();
   const sobrenome = document.getElementById("sobrenome").value.trim();
   const dataDeNascimento = document.getElementById("dataDeNascimento").value.trim();
   const responsavel = document.getElementById("responsavel").value.trim();
   const quarto = document.getElementById("quarto").value.trim();
-  const genero = document.querySelector('input[name="genero"]:checked').value
-  const especificacao = document.querySelector('input[name="especificacao"]:checked').value
-  const alergia = document.querySelector('input[name="alergia"]:checked').value
+
+  // Captura opções selecionadas de radio buttons
+  let genero = document.querySelector('input[name="genero"]:checked');
+  let especificacao = document.querySelector('input[name="especificacao"]:checked');
+  let alergia = document.querySelector('input[name="alergia"]:checked');
+  let neuroatipicidade = document.querySelector('input[name="neuroatipico"]:checked');
+
+  // Captura campos de detalhes
   const alergiaDetalhe = document.getElementById("alergiaDetalhe").value.trim();
   const neuroatipicoDetalhe = document.getElementById("neuroatipicoDetalhe").value.trim();
-  const resposta = document.getElementById("ul")
+
+  // Cálculo automático "60 anos ou +"
+  if (dataDeNascimento) {
+    const hoje = new Date();
+    const nascimento = new Date(dataDeNascimento);
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const m = hoje.getMonth() - nascimento.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
+
+    // Marca automaticamente o radio "60mais" se idade >= 60
+    if (idade >= 60) {
+      const radio60mais = document.getElementById("60mais");
+      if (radio60mais) {
+        radio60mais.checked = true;
+        especificacao = radio60mais; // atualiza especificacao para refletir 60+
+      }
+    }
+  }
+
+  // Validação dos campos obrigatórios
   if (
     !nome ||
     !sobrenome ||
@@ -25,116 +55,99 @@ function cadastro(e) {
     !responsavel ||
     !genero ||
     !especificacao ||
+    !neuroatipicidade ||
     !alergia ||
     (alergia.value === "sim" && !alergiaDetalhe) ||
-    (especificacao.value === "neuroatipico" && !neuroatipicoDetalhe)
+    (neuroatipicidade.value === "neuroatipico" && !neuroatipicoDetalhe)
   ) {
     alert("Por favor, preencha todos os campos corretamente.");
     return;
   }
 
+  // Cria objeto com os dados para salvar no localStorage
   const cadastro = {
     nome,
     sobrenome,
     dataDeNascimento,
     responsavel,
+    quarto,
     genero: genero.value,
     especificacao: especificacao.value,
-    neuroatipicoDetalhe: especificacao.value === "neuroatipico" ? neuroatipicoDetalhe : "",
+    neuroatipicidade: neuroatipicidade.value,
+    neuroatipicoDetalhe: neuroatipicidade.value === "neuroatipico" ? neuroatipicoDetalhe : "",
     alergia: alergia.value,
     alergiaDetalhe: alergia.value === "sim" ? alergiaDetalhe : ""
   };
 
+  // Recupera lista existente do localStorage e adiciona novo cadastro
   const cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
   cadastros.push(cadastro);
   localStorage.setItem("cadastros", JSON.stringify(cadastros));
 
-  // Mostra mensagem de concluído em alert
   alert("Concluído");
-
-  // Limpa os campos do formulário
   form.reset();
 
+  // Cria o elemento de lista para exibir o cadastro na tela
+  let li = document.createElement("li");
+  li.innerHTML = `
+    <span>Nome: ${nome}</span> <br> 
+    <span>Sobrenome: ${sobrenome}</span> <br>
+    <span>Data de Nascimento: ${dataDeNascimento}</span> <br>
+    <span>Responsável: ${responsavel}</span> <br>
+    <span>Quarto: ${quarto}</span> <br>
+    <span>Gênero: ${genero.value}</span> <br>
+    <span>Alergias: ${alergia.value === "sim" ? alergiaDetalhe : "Sem alergias"}</span> <br>
+    <span>Neuroatipicidade: ${neuroatipicidade.value === "neuroatipico" ? `Sim - ${neuroatipicoDetalhe}` : "Não"}</span> <br>
+    <span>Especificações: ${
+      especificacao.value === "60mais"
+        ? "60 anos ou +"
+        : especificacao.value === "nenhuma"
+        ? "Nenhuma"
+        : especificacao.value
+    }</span> <br>
+  `;
 
-let li = document.createElement("li");
-li.innerHTML = `
-  <span>Nome: ${nome}</span> <br>
-  <span>Sobrenome: ${sobrenome}</span> <br>
-  <span>Data de Nascimento: ${dataDeNascimento}</span> <br>
-  <span>Responsável: ${responsavel}</span> <br>
-  <span>Quarto: ${quarto}</span> <br>
-  <span>Gênero: ${genero}</span> <br>
-  <span>Alergias: ${alergia === "sim" ? alergiaDetalhe : "Sem alergias"}</span> <br>
-  <span>Especificações: ${
-    especificacao === "neuroatipico" ? neuroatipicoDetalhe :
-    especificacao === "60mais" ? "60 anos ou +" :
-    "Nenhuma"
-  }</span> <br>
-`;
-
-resposta.appendChild(li);
-
-
-  
-  if (genero == "feminino") {
-    
-    resposta.appendChild( li)
-  }
-  else if (genero.checked) {
-    
-    resposta.appendChild(li)
-  }
-  else {
-    
-    resposta.appendChild(li)
-  }
-
- 
-  let checkedCount2 = 0
-  const arr = []
-   if(alergia === "sim"){
-    arr.push(alergiaDetalhe)
-
-  }
-  if(alergia === "nao"){
-     arr.push("Sem alergias")
-  }
-   resposta.appendChild( `<span>Alergias: ${arr}</span>`)
-
-  const arr2 = []
-  if (especificacao === "neuroatipico") {
-    arr2.push(neuroatipicoDetalhe)
-    checkedCount2++;
-  }
-  if (especificacao === "60mais") {
-    arr2.push(" 60 anos ou + ")
-    checkedCount2++;
-  }
-  if (especificacao === "nenhuma") {
-    arr2.push(" Nenhuma ")
-    checkedCount2++;
-  }
-
-
-
-  resposta.appendChild( `<span>Especificações: ${arr2}</span>`)
-
-
+  // Adiciona o item na lista de respostas exibidas
+  resposta.appendChild(li);
 }
+
+// Exibe/oculta campo de detalhe de alergia
 document.getElementById("alergiaSim").addEventListener("change", function () {
   document.getElementById("alergiaDetalhe").style.display = "block";
 });
 document.getElementById("alergiaNao").addEventListener("change", function () {
   document.getElementById("alergiaDetalhe").style.display = "none";
 });
+
+// Exibe/oculta campo de detalhe de neuroatipicidade
 document.getElementById("neuroatipico").addEventListener("change", function () {
   document.getElementById("neuroatipicoDetalhe").style.display = "block";
 });
-document.querySelectorAll('input[name="especificacao"]').forEach(function (radio) {
+document.querySelectorAll('input[name="neuroatipico"]').forEach(function (radio) {
   if (radio.id !== "neuroatipico") {
     radio.addEventListener("change", function () {
       document.getElementById("neuroatipicoDetalhe").style.display = "none";
-
     });
   }
 });
+
+// Seleciona automaticamente "60 anos ou +" ao preencher data de nascimento
+document.addEventListener('DOMContentLoaded', function() {
+  const dataNascimento = document.getElementById('dataDeNascimento');
+  const radio60mais = document.getElementById('60mais');
+
+  dataNascimento.addEventListener('input', function() {
+    if (!this.value) return;
+
+    const hoje = new Date();
+    const nascimento = new Date(this.value);
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const m = hoje.getMonth() - nascimento.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
+
+    radio60mais.checked = idade >= 60;
+  });
+});
+
