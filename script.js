@@ -14,8 +14,10 @@ function cadastro(e) {
   const sobrenome = document.getElementById("sobrenome").value.trim();
   const dataDeNascimento = document.getElementById("dataDeNascimento").value.trim();
   const responsavel = document.getElementById("responsavel").value.trim();
+  const procedimento = document.getElementById("procedimento").value.trim()
   const quarto = document.getElementById("quarto").value.trim();
-
+  const endereco = document.getElementById("endereco").value.trim()
+  const telefone = document.getElementById("telefone").value.trim()
   // Captura opções selecionadas de radio buttons
   let genero = document.querySelector('input[name="genero"]:checked');
   let especificacao = document.querySelector('input[name="especificacao"]:checked');
@@ -25,6 +27,8 @@ function cadastro(e) {
   // Captura campos de detalhes
   const alergiaDetalhe = document.getElementById("alergiaDetalhe").value.trim();
   const neuroatipicoDetalhe = document.getElementById("neuroatipicoDetalhe").value.trim();
+
+
 
   // Cálculo automático "60 anos ou +"
   if (dataDeNascimento) {
@@ -53,6 +57,9 @@ function cadastro(e) {
     !quarto ||
     !dataDeNascimento ||
     !responsavel ||
+    !procedimento ||
+    ! endereco ||
+    !telefone ||
     !genero ||
     !especificacao ||
     !neuroatipicidade ||
@@ -70,7 +77,10 @@ function cadastro(e) {
     sobrenome,
     dataDeNascimento,
     responsavel,
+    procedimento,
     quarto,
+    endereco,
+    telefone,
     genero: genero.value,
     especificacao: especificacao.value,
     neuroatipicidade: neuroatipicidade.value,
@@ -94,7 +104,10 @@ function cadastro(e) {
     <span>Sobrenome: ${sobrenome}</span> <br>
     <span>Data de Nascimento: ${dataDeNascimento}</span> <br>
     <span>Responsável: ${responsavel}</span> <br>
+      <span>Procedimento: ${procedimento}</span> <br>
     <span>Quarto: ${quarto}</span> <br>
+      <span>Endereco: ${endereco}</span> <br>
+      <span>Telefone: ${telefone}</span> <br>
     <span>Gênero: ${genero.value}</span> <br>
     <span>Alergias: ${alergia.value === "sim" ? alergiaDetalhe : "Sem alergias"}</span> <br>
     <span>Neuroatipicidade: ${neuroatipicidade.value === "neuroatipico" ? `Sim - ${neuroatipicoDetalhe}` : "Não"}</span> <br>
@@ -148,6 +161,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     radio60mais.checked = idade >= 60;
+
+      if(telefone.length > 11 || telefone.length < 10){
+    alert =("O número de telefone precisa ter pelo menos 11 dígitos")
+    return;
+      }
   });
 });
 
