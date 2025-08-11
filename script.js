@@ -58,7 +58,7 @@ function cadastro(e) {
     !dataDeNascimento ||
     !responsavel ||
     !procedimento ||
-    ! endereco ||
+    !endereco ||
     !telefone ||
     !genero ||
     !especificacao ||
@@ -104,10 +104,10 @@ function cadastro(e) {
     <span>Sobrenome: ${sobrenome}</span> <br>
     <span>Data de Nascimento: ${dataDeNascimento}</span> <br>
     <span>Responsável: ${responsavel}</span> <br>
-      <span>Procedimento: ${procedimento}</span> <br>
+    <span>Procedimento: ${procedimento}</span> <br>
     <span>Quarto: ${quarto}</span> <br>
-      <span>Endereco: ${endereco}</span> <br>
-      <span>Telefone: ${telefone}</span> <br>
+    <span>Endereco: ${endereco}</span> <br>
+    <span>Telefone: ${telefone}</span> <br>
     <span>Gênero: ${genero.value}</span> <br>
     <span>Alergias: ${alergia.value === "sim" ? alergiaDetalhe : "Sem alergias"}</span> <br>
     <span>Neuroatipicidade: ${neuroatipicidade.value === "neuroatipico" ? `Sim - ${neuroatipicoDetalhe}` : "Não"}</span> <br>
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
       idade--;
     }
-
+  
     radio60mais.checked = idade >= 60;
 
       if(telefone.length > 11 || telefone.length < 10){
