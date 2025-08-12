@@ -109,7 +109,13 @@ function cadastro(e) {
     <span>Endereco: ${endereco}</span> <br>
     <span>Telefone: ${telefone}</span> <br>
     <span>Gênero: ${genero.value}</span> <br>
-    <span>Alergias: ${alergia.value === "sim" ? alergiaDetalhe : "Sem alergias"}</span> <br>
+    <span>Alergias: ${ alergia.value === "sim"
+       ? `Sim${alergiaDetalhe ? " (" + alergiaDetalhe + ")" : ""}`
+        : alergia.value === "nao"
+          ? "Sem alergias"
+          : "Não tenho conhecimento"
+    }</span> <br>
+    
     <span>Neuroatipicidade: ${neuroatipicidade.value === "neuroatipico" ? `Sim - ${neuroatipicoDetalhe}` : "Não"}</span> <br>
     <span>Especificações: ${
       especificacao.value === "60mais"
@@ -123,7 +129,7 @@ function cadastro(e) {
   // Adiciona o item na lista de respostas exibidas
   resposta.appendChild(li);
 }
-
+  
 // Exibe/oculta campo de detalhe de alergia
 document.getElementById("alergiaSim").addEventListener("change", function () {
   document.getElementById("alergiaDetalhe").style.display = "block";
@@ -144,6 +150,7 @@ document.querySelectorAll('input[name="neuroatipico"]').forEach(function (radio)
   }
 });
 
+   
 // Seleciona automaticamente "60 anos ou +" ao preencher data de nascimento
 document.addEventListener('DOMContentLoaded', function() {
   const dataNascimento = document.getElementById('dataDeNascimento');
@@ -162,10 +169,5 @@ document.addEventListener('DOMContentLoaded', function() {
   
     radio60mais.checked = idade >= 60;
 
-      if(telefone.length > 11 || telefone.length < 10){
-    alert =("O número de telefone precisa ter pelo menos 11 dígitos")
-    return;
-      }
   });
 });
-
