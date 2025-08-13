@@ -71,12 +71,23 @@
                      Data de Nascimento
 
                 </label>
+              
 
                 <div class = "input-campo">
 
                     <input type="date" id ="dataDeNascimento" class = "form-control" >
                 </div>
 
+                </div>
+                   <div class="input-caixa">
+                <label for="name" class="form_label">
+                     CPF
+                </label>
+
+                <div class = "input-campo">
+
+                    <input type="number" id ="CPF" class = "form-control" >
+                </div>
                 </div>
                    
                  <div class="input-caixa">
@@ -105,6 +116,21 @@
 
                     <input type="number" id ="telefone" class = "form-control" >
                 </div>
+                </div>
+                <div class="input-caixa">
+
+                <label for="name" class="form_label">
+                   Nome da mãe
+                </label>
+
+                <div class = "input-campo">
+
+                    <input type="text" id ="nomeMae" class = "form-control" >
+
+                    <i class = "fa-regular fa-user"></i>
+
+                </div>
+
                 </div>
 
                 <div class="input-caixa">
@@ -139,19 +165,39 @@
                 </div>
 
                 </div>
+                     <div class="input-caixa">
 
-               
-               
- <div class="input-caixa">
                 <label for="name" class="form_label">
-                     Quarto
+                 Histórico de doenças
                 </label>
 
                 <div class = "input-campo">
 
-                    <input type="number" id ="quarto" class = "form-control" >
+                    <input type="text" id ="doencas" class = "form-control" >
+
+               
+
                 </div>
+
                 </div>
+                        <div class="input-caixa">
+
+                <label for="name" class="form_label">
+                Medicações
+                </label>
+
+                <div class = "input-campo">
+
+                    <input type="text" id ="medicacao" class = "form-control" >
+
+
+                </div>
+
+                </div>
+
+               
+               
+
                                
 
                 <div class="radio">
@@ -191,17 +237,23 @@
     </div>
     </div>
                <div class="radio">
-  <label class="form_label">Neuroatipicidade</label>
+  <label class="form_label">Prioridade de atendimento </label>
   <div id="especificacaoInput">
     
     <div class="radio-caixa">
-  <input type="radio" id="neuroatipico" name="neuroatipico" class="form-control" value="neuroatipico">
-  <label for="neuroatipico" class="form_label">Neuroátipico</label>
+  <input type="radio" id="neuroatipico" name="prioridade" class="form-control" value="neuroatipico">
+  <label for="neuroatipico" class="form_label">Neurodivergente</label>
   <input type="text" id="neuroatipicoDetalhe" class="form-control" placeholder="Descreva a neuroatipicidade" style="display:none; margin-top:5px;">
+</div>
+
+ <div class="radio-caixa">
+  <input type="radio" id="gestante" name="prioridade" class="form-control" value="gestante">
+  <label for="gestante" class="form_label">Gestante</label>
+  
 </div>
   
     <div class="radio-caixa">
-      <input type="radio" id="nenhuma" name="neuroatipico" class="form-control" value="nenhuma">
+      <input type="radio" id="nenhuma" name="prioridade" class="form-control" value="nenhuma">
       <label for="nenhuma" class="form_label">Nenhuma</label>
     </div>
   </div>

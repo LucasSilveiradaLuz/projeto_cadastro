@@ -14,10 +14,13 @@ function cadastro(e) {
   const sobrenome = document.getElementById("sobrenome").value.trim();
   const dataDeNascimento = document.getElementById("dataDeNascimento").value.trim();
   const responsavel = document.getElementById("responsavel").value.trim();
+  const mae = document.getElementById("nomeMae").value.trim();
   const procedimento = document.getElementById("procedimento").value.trim()
-  const quarto = document.getElementById("quarto").value.trim();
+  const CPF = document.getElementById("CPF").value.trim();
+  const medicacao = document.getElementById("medicacao").value.trim()
   const endereco = document.getElementById("endereco").value.trim()
   const telefone = document.getElementById("telefone").value.trim()
+  const doenca = document.getElementById("doenca").value.trim()
   // Captura opções selecionadas de radio buttons
   let genero = document.querySelector('input[name="genero"]:checked');
   let especificacao = document.querySelector('input[name="especificacao"]:checked');
@@ -54,10 +57,13 @@ function cadastro(e) {
   if (
     !nome ||
     !sobrenome ||
-    !quarto ||
+    !CPF ||
     !dataDeNascimento ||
     !responsavel ||
     !procedimento ||
+    ! doenca ||
+    !mae ||
+    ! medicacao ||
     !endereco ||
     !telefone ||
     !genero ||
@@ -78,7 +84,10 @@ function cadastro(e) {
     dataDeNascimento,
     responsavel,
     procedimento,
-    quarto,
+    mae,
+    CPF,
+    medicacao,
+    doenca,
     endereco,
     telefone,
     genero: genero.value,
@@ -105,9 +114,12 @@ function cadastro(e) {
     <span>Data de Nascimento: ${dataDeNascimento}</span> <br>
     <span>Responsável: ${responsavel}</span> <br>
     <span>Procedimento: ${procedimento}</span> <br>
-    <span>Quarto: ${quarto}</span> <br>
+    <span>CPF: ${CPF}</span> <br>
+    <span>Mae: ${mae}</span> <br>
+     <span>Medicacao: ${medicacao}</span> <br>
     <span>Endereco: ${endereco}</span> <br>
     <span>Telefone: ${telefone}</span> <br>
+    <span>doenca: ${doenca}</span> <br>
     <span>Gênero: ${genero.value}</span> <br>
     <span>Alergias: ${ alergia.value === "sim"
        ? `Sim${alergiaDetalhe ? " (" + alergiaDetalhe + ")" : ""}`
@@ -115,9 +127,8 @@ function cadastro(e) {
           ? "Sem alergias"
           : "Não tenho conhecimento"
     }</span> <br>
-    
     <span>Neuroatipicidade: ${neuroatipicidade.value === "neuroatipico" ? `Sim - ${neuroatipicoDetalhe}` : "Não"}</span> <br>
-    <span>Especificações: ${
+    <span>especificacao: ${
       especificacao.value === "60mais"
         ? "60 anos ou +"
         : especificacao.value === "nenhuma"
