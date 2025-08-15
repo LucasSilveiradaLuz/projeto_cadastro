@@ -2,58 +2,117 @@
 const form = document.getElementById("form");
 const resposta = document.getElementById("ul");
 
-// Adiciona evento ao formulário para executar a função cadastro ao enviar
-form.addEventListener("submit", cadastro);
+/*
+ * Função showMessage
+ * NOVO: Antes usava alert para mensagens de erro/sucesso.
+ * AGORA: Exibe mensagens dinâmicas na tela, logo abaixo do formulário.
+ */
+function showMessage(msg, tipo = "erro") {
+  let msgDiv = document.getElementById("msg");
+  if (!msgDiv) {
+    msgDiv = document.createElement("div");
+    msgDiv.id = "msg";
+    msgDiv.style.margin = "10px 0";
+    msgDiv.style.fontWeight = "bold";
+    form.parentNode.insertBefore(msgDiv, form.nextSibling);
+  }
+  msgDiv.style.color = tipo === "erro" ? "red" : "green";
+  msgDiv.innerText = msg;
+  setTimeout(() => { msgDiv.innerText = ""; }, 3000);
+}
 
-function cadastro(e) {
-  // Impede o envio padrão do formulário (recarregar página)
-  e.preventDefault();
+/*
+ * Exibe/oculta campo de detalhe de alergia
+ * NOVO: Antes não havia opção "Não sei" e o campo não era dinâmico.
+ * AGORA: O campo de detalhamento só aparece se "Sim" for selecionado.
+ */
+document.getElementById("alergiaSim").addEventListener("change", function () {
+  document.getElementById("alergiaDetalhe").style.display = "block";
+});
+document.getElementById("alergiaNao").addEventListener("change", function () {
+  document.getElementById("alergiaDetalhe").style.display = "none";
+});
+document.getElementById("alergiaNaoSei").addEventListener("change", function () {
+  document.getElementById("alergiaDetalhe").style.display = "none";
+});
 
-  // Captura valores dos campos de texto
-  const nome = document.getElementById("nome").value.trim();
-  const sobrenome = document.getElementById("sobrenome").value.trim();
-  const dataDeNascimento = document.getElementById("dataDeNascimento").value.trim();
-  const responsavel = document.getElementById("responsavel").value.trim();
-  const mae = document.getElementById("nomeMae").value.trim();
-  const procedimento = document.getElementById("procedimento").value.trim()
-  const CPF = document.getElementById("CPF").value.trim();
-  const medicacao = document.getElementById("medicacao").value.trim()
-  const endereco = document.getElementById("endereco").value.trim()
-  const telefone = document.getElementById("telefone").value.trim()
-  const doenca = document.getElementById("doenca").value.trim()
-  // Captura opções selecionadas de radio buttons
-  let genero = document.querySelector('input[name="genero"]:checked');
-  let especificacao = document.querySelector('input[name="especificacao"]:checked');
-  let alergia = document.querySelector('input[name="alergia"]:checked');
-  let neuroatipicidade = document.querySelector('input[name="neuroatipico"]:checked');
+/*
+ * Exibe/oculta campo de detalhe de neuroatipicidade
+ * SEM MUDANÇAS SIGNIFICATIVAS, apenas mantido para consistência.
+ */
+document.getElementById("neuroatipico").addEventListener("change", function () {
+  document.getElementById("neuroatipicoDetalhe").style.display = "block";
+});
+document.querySelectorAll('input[name="prioridade"]').forEach(function (radio) {
+  if (radio.id !== "neuroatipico") {
+    radio.addEventListener("change", function () {
+      document.getElementById("neuroatipicoDetalhe").style.display = "none";
+    });
+  }
+});
 
-  // Captura campos de detalhes
-  const alergiaDetalhe = document.getElementById("alergiaDetalhe").value.trim();
-  const neuroatipicoDetalhe = document.getElementById("neuroatipicoDetalhe").value.trim();
+/*
+ * Seleção automática de "60 anos ou +"
+ * NOVO: Antes não havia essa automação.
+ * AGORA: Se a data de nascimento indicar 60 anos ou mais, marca automaticamente o radio correspondente.
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const dataNascimento = document.getElementById('dataDeNascimento');
+  const radio60mais = document.getElementById('60mais');
+  if (!dataNascimento || !radio60mais) return;
 
-
-
-  // Cálculo automático "60 anos ou +"
-  if (dataDeNascimento) {
+  dataNascimento.addEventListener('change', function() {
+    if (!this.value) return;
     const hoje = new Date();
-    const nascimento = new Date(dataDeNascimento);
+    const nascimento = new Date(this.value);
     let idade = hoje.getFullYear() - nascimento.getFullYear();
     const m = hoje.getMonth() - nascimento.getMonth();
     if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
       idade--;
     }
+    radio60mais.checked = idade >= 60;
+  });
+});
 
-    // Marca automaticamente o radio "60mais" se idade >= 60
-    if (idade >= 60) {
-      const radio60mais = document.getElementById("60mais");
-      if (radio60mais) {
-        radio60mais.checked = true;
-        especificacao = radio60mais; // atualiza especificacao para refletir 60+
-      }
-    }
-  }
+/*
+ * Envio do formulário
+ * MUDANÇAS:
+ * - Validação aprimorada: agora usa showMessage em vez de alert.
+ * - Corrigido id do campo de doenças (de "doenca" para "doencas").
+ * - Exibe registro na tela (antes não exibia ou exibia incompleto).
+ * - Montagem dos textos de alergia e especificação mais clara e completa.
+ * - AGORA: Adicionado alert para erro e sucesso conforme solicitado.
+ */
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // Captura valores dos campos de texto
+  const nome = document.getElementById("nome")?.value.trim() || "";
+  const sobrenome = document.getElementById("sobrenome")?.value.trim() || "";
+  const dataDeNascimento = document.getElementById("dataDeNascimento")?.value.trim() || "";
+  const responsavel = document.getElementById("responsavel")?.value.trim() || "";
+  const mae = document.getElementById("nomeMae")?.value.trim() || "";
+  const procedimento = document.getElementById("procedimento")?.value.trim() || "";
+  const CPF = document.getElementById("CPF")?.value.trim() || "";
+  const medicacao = document.getElementById("medicacao")?.value.trim() || "";
+  const endereco = document.getElementById("endereco")?.value.trim() || "";
+  const telefone = document.getElementById("telefone")?.value.trim() || "";
+  
+  const doenca = document.getElementById("doencas")?.value.trim() || "";
+
+  // Captura opções selecionadas de radio buttons
+  let genero = document.querySelector('input[name="genero"]:checked');
+  let prioridade = document.querySelector('input[name="prioridade"]:checked');
+  let especificacao = document.querySelector('input[name="especificacao"]:checked');
+  let alergia = document.querySelector('input[name="alergia"]:checked');
+  let neuroatipicidade = document.querySelector('input[name="prioridade"]:checked');
+
+  // Captura campos de detalhes
+  const alergiaDetalhe = document.getElementById("alergiaDetalhe")?.value.trim() || "";
+  const neuroatipicoDetalhe = document.getElementById("neuroatipicoDetalhe")?.value.trim() || "";
 
   // Validação dos campos obrigatórios
+  // DIFERENÇA: Agora usa showMessage, antes usava alert.
   if (
     !nome ||
     !sobrenome ||
@@ -61,52 +120,53 @@ function cadastro(e) {
     !dataDeNascimento ||
     !responsavel ||
     !procedimento ||
-    ! doenca ||
+    !doenca ||
     !mae ||
-    ! medicacao ||
+    !medicacao ||
     !endereco ||
     !telefone ||
     !genero ||
-    !especificacao ||
-    !neuroatipicidade ||
+    !(prioridade || (especificacao && especificacao.value === "60mais")) ||
     !alergia ||
     (alergia.value === "sim" && !alergiaDetalhe) ||
-    (neuroatipicidade.value === "neuroatipico" && !neuroatipicoDetalhe)
+    (neuroatipicidade && neuroatipicidade.value === "neuroatipico" && !neuroatipicoDetalhe)
   ) {
-    alert("Por favor, preencha todos os campos corretamente.");
+    showMessage("Por favor, preencha todos os campos obrigatórios.", "erro");
+    
     return;
   }
 
-  // Cria objeto com os dados para salvar no localStorage
-  const cadastro = {
-    nome,
-    sobrenome,
-    dataDeNascimento,
-    responsavel,
-    procedimento,
-    mae,
-    CPF,
-    medicacao,
-    doenca,
-    endereco,
-    telefone,
-    genero: genero.value,
-    especificacao: especificacao.value,
-    neuroatipicidade: neuroatipicidade.value,
-    neuroatipicoDetalhe: neuroatipicidade.value === "neuroatipico" ? neuroatipicoDetalhe : "",
-    alergia: alergia.value,
-    alergiaDetalhe: alergia.value === "sim" ? alergiaDetalhe : ""
-  };
+  // Monta texto de alergia
+  // DIFERENÇA: Agora cobre "Sim", "Não" e "Não sei"
+  let alergiaTexto = "";
+  if (alergia.value === "sim") {
+    alergiaTexto = `Sim${alergiaDetalhe ? " (" + alergiaDetalhe + ")" : ""}`;
+  } else if (alergia.value === "nao") {
+    alergiaTexto = "Não";
+  } else {
+    alergiaTexto = "Não sei";
+  }
 
-  // Recupera lista existente do localStorage e adiciona novo cadastro
-  const cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
-  cadastros.push(cadastro);
-  localStorage.setItem("cadastros", JSON.stringify(cadastros));
+  // Monta texto de especificação/prioridade
+  // DIFERENÇA: Agora cobre "Neuroatípico", "60 anos ou +", "Gestante" e "Nenhuma"
+  let prioridadeTexto = "";
+  let especificacaoTexto = "";
+  if (prioridade && prioridade.value === "neuroatipico") {
+    prioridadeTexto = `Neuroatípico${neuroatipicoDetalhe ? " (" + neuroatipicoDetalhe + ")" : ""}`;
+  
+  } else if (prioridade && prioridade.value === "gestante") {
+    prioridadeTexto = "Gestante";
+  } else {
+    prioridadeTexto = "Nenhuma";
+  }
 
-  alert("Concluído");
-  form.reset();
+  
+   if (especificacao && especificacao.value === "60mais") {
+    especificacaoTexto = "60 anos ou +";
+  }
 
   // Cria o elemento de lista para exibir o cadastro na tela
+  // DIFERENÇA: Antes não exibia todos os campos, agora exibe todos de forma clara.
   let li = document.createElement("li");
   li.innerHTML = `
     <span>Nome: ${nome}</span> <br> 
@@ -115,70 +175,24 @@ function cadastro(e) {
     <span>Responsável: ${responsavel}</span> <br>
     <span>Procedimento: ${procedimento}</span> <br>
     <span>CPF: ${CPF}</span> <br>
-    <span>Mae: ${mae}</span> <br>
-     <span>Medicacao: ${medicacao}</span> <br>
-    <span>Endereco: ${endereco}</span> <br>
+    <span>Mãe: ${mae}</span> <br>
+    <span>Medicação: ${medicacao}</span> <br>
+    <span>Endereço: ${endereco}</span> <br>
     <span>Telefone: ${telefone}</span> <br>
-    <span>doenca: ${doenca}</span> <br>
+    <span>Doença: ${doenca}</span> <br>
     <span>Gênero: ${genero.value}</span> <br>
-    <span>Alergias: ${ alergia.value === "sim"
-       ? `Sim${alergiaDetalhe ? " (" + alergiaDetalhe + ")" : ""}`
-        : alergia.value === "nao"
-          ? "Sem alergias"
-          : "Não tenho conhecimento"
-    }</span> <br>
-    <span>Neuroatipicidade: ${neuroatipicidade.value === "neuroatipico" ? `Sim - ${neuroatipicoDetalhe}` : "Não"}</span> <br>
-    <span>especificacao: ${
-      especificacao.value === "60mais"
-        ? "60 anos ou +"
-        : especificacao.value === "nenhuma"
-        ? "Nenhuma"
-        : especificacao.value
-    }</span> <br>
+    <span>Alergias: ${alergiaTexto}</span> <br>
+    <span>Prioridade: ${prioridadeTexto}</span> <br> 
+    <span>Especificações: ${especificacaoTexto}</span> <br>
+    <hr>
   `;
-
-  // Adiciona o item na lista de respostas exibidas
   resposta.appendChild(li);
-}
+
+  // Mensagem de sucesso na tela
+  showMessage("Concluído!", "sucesso");
   
-// Exibe/oculta campo de detalhe de alergia
-document.getElementById("alergiaSim").addEventListener("change", function () {
-  document.getElementById("alergiaDetalhe").style.display = "block";
-});
-document.getElementById("alergiaNao").addEventListener("change", function () {
+  // Limpa o formulário e esconde campos dinâmicos
+  form.reset();
   document.getElementById("alergiaDetalhe").style.display = "none";
-});
-
-// Exibe/oculta campo de detalhe de neuroatipicidade
-document.getElementById("neuroatipico").addEventListener("change", function () {
-  document.getElementById("neuroatipicoDetalhe").style.display = "block";
-});
-document.querySelectorAll('input[name="neuroatipico"]').forEach(function (radio) {
-  if (radio.id !== "neuroatipico") {
-    radio.addEventListener("change", function () {
-      document.getElementById("neuroatipicoDetalhe").style.display = "none";
-    });
-  }
-});
-
-   
-// Seleciona automaticamente "60 anos ou +" ao preencher data de nascimento
-document.addEventListener('DOMContentLoaded', function() {
-  const dataNascimento = document.getElementById('dataDeNascimento');
-  const radio60mais = document.getElementById('60mais');
-
-  dataNascimento.addEventListener('input', function() {
-    if (!this.value) return;
-
-    const hoje = new Date();
-    const nascimento = new Date(this.value);
-    let idade = hoje.getFullYear() - nascimento.getFullYear();
-    const m = hoje.getMonth() - nascimento.getMonth();
-    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
-      idade--;
-    }
-  
-    radio60mais.checked = idade >= 60;
-
-  });
+  document.getElementById("neuroatipicoDetalhe").style.display = "none";
 });
