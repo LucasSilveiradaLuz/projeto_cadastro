@@ -96,22 +96,14 @@ form.addEventListener("submit", function(e) {
   // Captura campos de detalhes
   const alergiaDetalhe = document.getElementById("alergiaDetalhe")?.value.trim() || "";
   const neuroatipicoDetalhe = document.getElementById("neuroatipicoDetalhe")?.value.trim() || "";
-const cadastro = 
-nome | 
-sobrenome |
-dataDeNascimento |
-responsavel |
-mae |
-procedimento |
-CPF |
-medicacao |
-endereco |
-telefone |
-doenca 
 
+const cadastro = [
+  nome, sobrenome, dataDeNascimento, responsavel, mae, procedimento, CPF,  medicacao, endereco, telefone, doenca, genero, prioridade, especificacao, alergia, neuroatipicidade
+]
   const cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
   cadastros.push(cadastro);
   localStorage.setItem("cadastros", JSON.stringify(cadastros));
+  
   // Validação dos campos obrigatórios com alert específico
   if (!nome) {
     alert("Digite o nome corretamente.");
