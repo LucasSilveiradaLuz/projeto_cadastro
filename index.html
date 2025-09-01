@@ -221,35 +221,36 @@
     <div class="radio">
       <label class="form_label">Alergias:</label>
       <div id="alergia">
-      <input type="radio" id="alergiaSim" name="alergia" value="sim">
-      <label for="alergiaSim" class="form_label">Sim</label>
+     
       <input type="radio" id="alergiaNao" name="alergia" value="nao">
       <label for="alergiaNao" class="form_label">Não</label>
       <input type="radio" id="alergiaNaoSei" name="alergia" value="nao_sei">
         <label for="alergiaNaoSei" class="form_label">Não sei</label>
+         <input type="radio" id="alergiaSim" name="alergia" value="sim">
+      <label for="alergiaSim" class="form_label">Sim</label>
       <!-- Caixa de texto para detalhar alergia, escondida por padrão -->
-      <input type="text" id="alergiaDetalhe" class="form-control" placeholder="Descreva a alergia" style="display:none; margin-top:5px;">
+      <input type="text" id="alergiaDetalhe" class="form-control" style="display:none; margin-top:5px; padding: 10px;
+  border: black;
+  border-radius: 8px;
+  font-size: 14px;">
     </div>
     </div>
                <div class="radio">
   <label class="form_label">Prioridade de atendimento </label>
   <div id="especificacaoInput">
     
-    <div class="radio-caixa">
-  <input type="radio" id="neuroatipico" name="prioridade" class="form-control" value="neuroatipico">
-  <label for="neuroatipico" class="form_label">Neurodivergente</label>
-  <input type="text" id="neuroatipicoDetalhe" class="form-control" placeholder="Descreva a neuroatipicidade" style="display:none; margin-top:5px;">
-</div>
-
- <div class="radio-caixa">
+       <input type="radio" id="nenhuma" name="prioridade" class="form-control" value="nenhuma">
+      <label for="nenhuma" class="form_label">Nenhuma    </label>
   <input type="radio" id="gestante" name="prioridade" class="form-control" value="gestante">
-  <label for="gestante" class="form_label">Gestante</label>
-  
-</div>
-  
-    <div class="radio-caixa">
-      <input type="radio" id="nenhuma" name="prioridade" class="form-control" value="nenhuma">
-      <label for="nenhuma" class="form_label">Nenhuma</label>
+  <label for="gestante" class="form_label">Gestante  </label>
+ 
+    
+      <input type="radio" id="neuroatipico" name="prioridade" class="form-control" value="neuroatipico">
+  <label for="neuroatipico" class="form_label">Neurodivergência  </label>
+  <input type="text" id="neuroatipicoDetalhe" class="form-control" style="display:none; margin-top:5px; padding: 10px;
+  border: black;
+  border-radius: 8px;
+  font-size: 14px;">
     </div>
   </div>
 

@@ -1,4 +1,4 @@
- // Obtém o formulário e a lista onde os cadastros serão exibidos 
+// Obtém o formulário e a lista onde os cadastros serão exibidos 
 const form = document.getElementById("form");
 const resposta = document.getElementById("ul");
 
@@ -96,7 +96,22 @@ form.addEventListener("submit", function(e) {
   // Captura campos de detalhes
   const alergiaDetalhe = document.getElementById("alergiaDetalhe")?.value.trim() || "";
   const neuroatipicoDetalhe = document.getElementById("neuroatipicoDetalhe")?.value.trim() || "";
+const cadastro = 
+nome | 
+sobrenome |
+dataDeNascimento |
+responsavel |
+mae |
+procedimento |
+CPF |
+medicacao |
+endereco |
+telefone |
+doenca 
 
+  const cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
+  cadastros.push(cadastro);
+  localStorage.setItem("cadastros", JSON.stringify(cadastros));
   // Validação dos campos obrigatórios com alert específico
   if (!nome) {
     alert("Digite o nome corretamente.");
@@ -108,34 +123,14 @@ form.addEventListener("submit", function(e) {
     showMessage("Por favor, preencha o sobrenome.", "erro");
     return;
   }
-  if (!CPF || !/^\d{11}$/.test(CPF)) {
-    alert("Digite o CPF corretamente (11 dígitos numéricos).");
-    showMessage("CPF deve conter exatamente 11 dígitos numéricos.", "erro");
-    return;
-  }
   if (!dataDeNascimento) {
     alert("Digite a data de nascimento corretamente.");
     showMessage("Por favor, preencha a data de nascimento.", "erro");
     return;
   }
-  if (!responsavel) {
-    alert("Digite o responsável corretamente.");
-    showMessage("Por favor, preencha o responsável.", "erro");
-    return;
-  }
-  if (!procedimento) {
-    alert("Digite o procedimento corretamente.");
-    showMessage("Por favor, preencha o procedimento.", "erro");
-    return;
-  }
-  if (!mae) {
-    alert("Digite o nome da mãe corretamente.");
-    showMessage("Por favor, preencha o nome da mãe.", "erro");
-    return;
-  }
-  if (!medicacao) {
-    alert("Digite a medicação corretamente.");
-    showMessage("Por favor, preencha a medicação.", "erro");
+  if (!CPF || !/^\d{11}$/.test(CPF)) {
+    alert("Digite o CPF corretamente (11 dígitos numéricos).");
+    showMessage("CPF deve conter exatamente 11 dígitos numéricos.", "erro");
     return;
   }
   if (!endereco) {
@@ -143,9 +138,9 @@ form.addEventListener("submit", function(e) {
     showMessage("Por favor, preencha o endereço.", "erro");
     return;
   }
-  if (!telefone || !/^\d{11}$/.test(telefone)) {
-    alert("Digite o telefone corretamente (11 dígitos numéricos).");
-    showMessage("Telefone deve conter exatamente 11 dígitos numéricos.", "erro");
+   if (!telefone || !/^\d{13}$/.test(telefone)) {
+    alert("Digite o telefone corretamente (13 dígitos numéricos).");
+    showMessage("Telefone deve conter exatamente 13 dígitos numéricos.", "erro");
     return;
     // regex que testa quantos dígitos tem o telefone
     // ^ início da string
@@ -153,22 +148,41 @@ form.addEventListener("submit", function(e) {
     // $ fim da string 
     
   }
+   if (!mae) {
+    alert("Digite o nome da mãe corretamente.");
+    showMessage("Por favor, preencha o nome da mãe.", "erro");
+    return;
+  }
+   if (!procedimento) {
+    alert("Digite o procedimento corretamente.");
+    showMessage("Por favor, preencha o procedimento.", "erro");
+    return;
+  }
+  if (!responsavel) {
+    alert("Digite o responsável corretamente.");
+    showMessage("Por favor, preencha o responsável.", "erro");
+    return;
+  }
   if (!doenca) {
     alert("Digite a doença corretamente.");
     showMessage("Por favor, preencha a doença.", "erro");
     return;
   }
+ 
+  if (!medicacao) {
+    alert("Digite a medicação corretamente.");
+    showMessage("Por favor, preencha a medicação.", "erro");
+    return;
+  }
+  
+ 
+ 
   if (!genero) {
     alert("Selecione o gênero.");
     showMessage("Por favor, selecione o gênero.", "erro");
     return;
   }
-  if (!(prioridade || (especificacao && especificacao.value === "60mais"))) {
-    alert("Selecione a prioridade ou especificação.");
-    showMessage("Por favor, selecione a prioridade ou especificação.", "erro");
-    return;
-  }
-  if (!alergia) {
+   if (!alergia) {
     alert("Selecione a opção de alergia.");
     showMessage("Por favor, selecione a opção de alergia.", "erro");
     return;
@@ -178,6 +192,12 @@ form.addEventListener("submit", function(e) {
     showMessage("Por favor, descreva a alergia.", "erro");
     return;
   }
+  if (!(prioridade || (especificacao && especificacao.value === "60mais"))) {
+    alert("Selecione a prioridade ou especificação.");
+    showMessage("Por favor, selecione a prioridade ou especificação.", "erro");
+    return;
+  }
+ 
   if (neuroatipicidade && neuroatipicidade.value === "neuroatipico" && !neuroatipicoDetalhe) {
     alert("Descreva a neuroatipicidade.");
     showMessage("Por favor, descreva a neuroatipicidade.", "erro");
