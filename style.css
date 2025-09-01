@@ -12,7 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #6366f1;
+  background-color: 
+  #00AEEF;
 }
 
 main {
@@ -45,13 +46,13 @@ main {
   width: 100px;
   height: 3px;
   border-radius: 30px;
-  background-color: #6366f1;
+  background-color: #2DBE3C;
   bottom: -4px;
   left: 0;
 }
 
 .btn-padrao {
-  background-color: #6366f1;
+  background-color: #2DBE3C;
   color: white;
   border: none;
   border-radius: 8px;
@@ -67,7 +68,7 @@ main {
 }
 
 .btn-padrao:hover {
-  background-color: #818cf8;
+  background-color:  #00AEEF;
 }
 
 form {
