@@ -104,6 +104,7 @@ const cadastro = [
   cadastros.push(cadastro);
   localStorage.setItem("cadastros", JSON.stringify(cadastros));
   
+  
   // Validação dos campos obrigatórios com alert específico
   if (!nome) {
     alert("Digite o nome corretamente.");
@@ -250,4 +251,15 @@ const cadastro = [
   form.reset();
   document.getElementById("alergiaDetalhe").style.display = "none";
   document.getElementById("neuroatipicoDetalhe").style.display = "none";
+  
 });
+// Alterna abas
+        document.getElementById("btnCadastro").onclick = function() {
+            document.getElementById("cadastro-section").style.display = "block";
+            document.getElementById("login-section").style.display = "none";
+        };
+        document.getElementById("btnLogin").onclick = function() {
+            document.getElementById("cadastro-section").style.display = "none";
+            document.getElementById("login-section").style.display = "block";
+        };
+ 
