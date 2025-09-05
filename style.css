@@ -15,7 +15,7 @@ body {
   background-color: 
   #00AEEF;
     min-height: 100%; 
-    background-image: url('img/enfermagemFundo.png'); 
+    background-image: url('enfermagemFundo.png'); 
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
