@@ -257,9 +257,25 @@ const cadastro = [
         document.getElementById("btnCadastro").onclick = function() {
             document.getElementById("cadastro-section").style.display = "block";
             document.getElementById("login-section").style.display = "none";
+            document.getElementById("painel-titulo").style.display = "none"; // Esconde o título
         };
+
         document.getElementById("btnLogin").onclick = function() {
             document.getElementById("cadastro-section").style.display = "none";
             document.getElementById("login-section").style.display = "block";
+            document.getElementById("painel-titulo").style.display = "inline"; // Mostra o título
         };
- 
+        // Esconde o botão de enviar ao clicar no Painel
+document.getElementById('btnLogin').addEventListener('click', function() {
+    document.getElementById('cadastro-section').style.display = 'none';
+    document.getElementById('login-section').style.display = 'block';
+    document.querySelector('button[type="submit"]').style.display = 'none';
+});
+
+// Mostra o botão de enviar ao voltar para Cadastro
+document.getElementById('btnCadastro').addEventListener('click', function() {
+    document.getElementById('cadastro-section').style.display = 'block';
+    document.getElementById('login-section').style.display = 'none';
+    document.querySelector('button[type="submit"]').style.display = 'inline-block';
+});
+
