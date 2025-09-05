@@ -8,21 +8,32 @@
     <title>Cadastro</title>
 </head>
 <body>
-  </style>
+ 
     <main>
         <!-- Abas de navegação -->
-        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-            <button id="btnCadastro" class="btn-padrao">Cadastro</button>
-            <button id="btnLogin" class="btn-padrao"> Painel</button>
-        </div>
+        <!-- Abas de navegação + título do painel -->
+    <div id="nav-bar" style="display: flex; align-items: center; gap: 20px;">
+        <button id="btnCadastro" class="btn-padrao">Cadastro</button>
+        <button id="btnLogin" class="btn-padrao">Painel</button>
+    </div>
+    <!-- TÍTULO EMBAIXO DOS BOTÕES -->
+    <div style="margin-bottom: 32px; text-align: center;">
+        <span id="painel-titulo">Painel dos Pacientes</span>
+    </div>
+
+    <!-- Aba Cadastro -->
+   
+
         <style>
   #logo {
     position: absolute;
     top: 10px;
     right: 650px;
+    margin: 30px;
   }
 </style>
 <img src="img/sensecare-removebg-preview.png" id="logo" alt="Logo SenseCare" width="100" height="100">
+
         <!-- Aba Cadastro -->
         <div id="cadastro-section">
             <h1 id="form_titulo">Cadastro do paciente</h1>
@@ -279,12 +290,12 @@
                 <ul id="ul"></ul>
             </div>
         </div>
-
-        <!-- Aba Login (inicialmente oculta) -->
-        <div id="login-section" style="display: none;">
-            <h1>Painel de Pacientes</h1>
-            <form id="login-form">
-                
+                 <!-- Aba Painel (inicialmente oculta) -->
+                  <div id="login-section" style="display: none;">
+                      <!-- TÍTULO DO PAINEL -->
+                     
+                      <form id="login-form">
+                          <!-- ...seu formulário de login, se houver... -->
             </form>
             <div id="resposta-login"></div>
         </div>
