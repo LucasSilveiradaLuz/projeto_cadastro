@@ -257,14 +257,34 @@ const cadastro = [
         document.getElementById("btnCadastro").onclick = function() {
             document.getElementById("cadastro-section").style.display = "block";
             document.getElementById("login-section").style.display = "none";
+            document.getElementById("agenda-section").style.display = "none";
+            document.getElementById("config-section").style.display = "none";
             document.getElementById("painel-titulo").style.display = "none"; // Esconde o título
         };
 
         document.getElementById("btnLogin").onclick = function() {
             document.getElementById("cadastro-section").style.display = "none";
             document.getElementById("login-section").style.display = "block";
+            document.getElementById("agenda-section").style.display = "none";
+            document.getElementById("config-section").style.display = "none";
             document.getElementById("painel-titulo").style.display = "inline"; // Mostra o título
         };
+        document.getElementById("btnAgenda").onclick = function() {
+    document.getElementById("cadastro-section").style.display = "none";
+    document.getElementById("login-section").style.display = "none";
+    document.getElementById("agenda-section").style.display = "block";
+    document.getElementById("config-section").style.display = "none";
+    document.getElementById("painel-titulo").style.display = "none";
+};
+
+document.getElementById("btnConfig").onclick = function() {
+    document.getElementById("cadastro-section").style.display = "none";
+    document.getElementById("login-section").style.display = "none";
+    document.getElementById("agenda-section").style.display = "none";
+    document.getElementById("config-section").style.display = "block";
+    document.getElementById("painel-titulo").style.display = "none";
+};
+
         // Esconde o botão de enviar ao clicar no Painel
 document.getElementById('btnLogin').addEventListener('click', function() {
     document.getElementById('cadastro-section').style.display = 'none';

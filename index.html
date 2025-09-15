@@ -14,11 +14,13 @@
         <!-- Abas de navegação + título do painel -->
     <div id="nav-bar" style="display: flex; align-items: center; gap: 20px;">
         <button id="btnCadastro" class="btn-padrao">Cadastro</button>
-        <button id="btnLogin" class="btn-padrao">Painel</button>
+        <button id="btnLogin" class="btn-padrao">Pacientes</button>
+        <button id="btnAgenda" class="btn-padrao">Agenda</button>
+    <button id="btnConfig" class="btn-padrao">Config</button>
     </div>
     <!-- TÍTULO EMBAIXO DOS BOTÕES -->
                    <div style=  "margin-bottom: 32px; text-align: center;">
-        <span id="painel-titulo" style =  "display: none" >Painel dos Pacientes</span>
+        <span id="painel-titulo" style =  "display: none" >Pacientes</span>
     </div>
 
     <!-- Aba Cadastro -->
@@ -302,6 +304,18 @@
   
             <div id="resposta-login"></div>
         </div>
+
+        <!-- Aba Relatórios (inicialmente oculta) -->
+<div id="agenda-section" style="display: none;">
+    <h1 id="agenda-titulo">Agenda</h1>
+    <!-- Conteúdo da agenda aqui -->
+</div>
+
+<!-- Aba Configurações (inicialmente oculta) -->
+<div id="config-section" style="display: none;">
+    <h1 id="config-titulo">Configurações</h1>
+    <!-- Conteúdo de configurações aqui -->
+</div>
     </main>
     <script src="script.js"></script> 
 </body>

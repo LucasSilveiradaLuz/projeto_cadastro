@@ -191,7 +191,7 @@ input[type="radio"] {
     /* Remova position: absolute, top, left, width, z-index, box-shadow e background */
     text-align: left;
     font-size: 2.3rem;
-    color: #0071BC;
+    color: black;
     margin: 0 0 0 30px;
     margin-bottom: 50px;
     padding: 0;
