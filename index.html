@@ -13,10 +13,11 @@
         <!-- Abas de navegação -->
         <!-- Abas de navegação + título do painel -->
     <div id="nav-bar" style="display: flex; align-items: center; gap: 20px;">
+        <button id="btnHome" class="btn-padrao">Início</button>
         <button id="btnCadastro" class="btn-padrao">Cadastro</button>
         <button id="btnLogin" class="btn-padrao">Pacientes</button>
         <button id="btnAgenda" class="btn-padrao">Agenda</button>
-    <button id="btnConfig" class="btn-padrao">Config</button>
+        <button id="btnConfig" class="btn-padrao">Config</button>
     </div>
     <!-- TÍTULO EMBAIXO DOS BOTÕES -->
                    <div style=  "margin-bottom: 32px; text-align: center;">
@@ -28,13 +29,13 @@
 
         <style>
   #logo {
-    position: absolute;
-    top: 10px;
-    right: 650px;
-    margin: 30px;
-  }
+    display: block;
+    margin: 0 auto 24px auto;
+    position: static;
+    top: unset;
+    right: unset;
+}
 </style>
-<img src="img/sensecare-removebg-preview.png" id="logo" alt="Logo SenseCare" width="100" height="100">
 
         <!-- Aba Cadastro -->
         <div id="cadastro-section">
@@ -315,6 +316,45 @@
 <div id="config-section" style="display: none;">
     <h1 id="config-titulo">Configurações</h1>
     <!-- Conteúdo de configurações aqui -->
+</div>
+<div id="home-section">
+    <img src="img/sensecare-removebg-preview.png" id="logo" alt="Logo SenseCare" width="80" height="80" style="margin-bottom: 16px;">
+    <div class="home-header">
+        <div class="home-avatar"></div>
+        
+        <div>
+            <div class="home-boasvindas">Boas vindas</div>
+            <div class="home-ola"><strong>Olá, Enfermeira Ana!</strong></div>
+        </div>
+    </div>
+    <div class="home-card">
+        <div class="home-resumo-titulo">Resumo</div>
+        <div class="home-resumo-item">
+            <i class="fa-solid fa-heart-pulse" style="color:#00B894;"></i>
+            Você tem <strong>3 pacientes</strong>
+            <span class="home-resumo-seta">&gt;</span>
+        </div>
+        <div class="home-resumo-item">
+            <i class="fa-solid fa-bell" style="color:#00B894;"></i>
+            <strong>4 alertas pendentes</strong>
+            <span class="home-resumo-seta">&gt;</span>
+        </div>
+    </div>
+    <div class="home-acesso-titulo">Botões de acesso rápido</div>
+    <div class="home-acesso-rapido">
+        <button class="home-acesso-btn">
+            <i class="fa-solid fa-user-plus"></i><br>
+            Gerenciar Pacientes
+        </button>
+        <button class="home-acesso-btn">
+            <i class="fa-solid fa-calendar-check"></i><br>
+            Agendar Cuidados
+        </button>
+        <button class="home-acesso-btn">
+            <i class="fa-solid fa-bell"></i><br>
+            Histórico de Alertas
+        </button>
+    </div>
 </div>
     </main>
     <script src="script.js"></script> 

@@ -167,6 +167,18 @@ input[type="radio"] {
   accent-color: #6366f1;
   cursor: pointer;
 }
+      .home-titulo {
+    font-size: 2rem;
+    color: #00B894;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.home-descricao {
+    font-size: 1.1rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 24px;
+}
 /* Ajuste nos cards para ficarem mais uniformes */
 
 
@@ -216,4 +228,109 @@ input[type="radio"] {
 }
 #img {
   margin: 500px;
+}
+#home-section {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px 0 0 0;
+}
+
+.home-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.home-avatar {
+    width: 48px;
+    height: 48px;
+    background: #e0e0e0;
+    color: #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.home-boasvindas {
+    font-size: 0.95rem;
+    color: #888;
+}
+
+.home-ola {
+    font-size: 1.15rem;
+    color: #222;
+}
+
+.home-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 18px 20px;
+    margin-bottom: 22px;
+}
+
+.home-resumo-titulo {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.home-resumo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    margin-bottom: 7px;
+    color: #444;
+}
+
+.home-resumo-seta {
+    margin-left: auto;
+    color: #00B894;
+    font-weight: bold;
+}
+
+.home-acesso-titulo {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.home-acesso-rapido {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.home-acesso-btn {
+    background: linear-gradient(135deg, #00B894 80%, #00AEEF 100%);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 10px 10px 10px;
+    width: 110px;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.home-acesso-btn i {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.home-acesso-btn:hover {
+    background: linear-gradient(135deg, #00AEEF 80%, #00B894 100%);
 }

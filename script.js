@@ -299,3 +299,42 @@ document.getElementById('btnCadastro').addEventListener('click', function() {
     document.querySelector('button[type="submit"]').style.display = 'inline-block';
 });
 
+function mostrarAba(aba) {
+    document.getElementById("home-section").style.display = "none";
+    document.getElementById("cadastro-section").style.display = "none";
+    document.getElementById("login-section").style.display = "none";
+    document.getElementById("agenda-section").style.display = "none";
+    document.getElementById("config-section").style.display = "none";
+    document.getElementById("painel-titulo").style.display = "none";
+
+    // Mostra ou esconde o botão de enviar conforme a aba
+    const btnEnviar = document.querySelector('button[type="submit"]');
+    if (btnEnviar) {
+        btnEnviar.style.display = (aba === "cadastro") ? "inline-block" : "none";
+    }
+
+    if (aba === "home") {
+        document.getElementById("home-section").style.display = "block";
+    } else if (aba === "cadastro") {
+        document.getElementById("cadastro-section").style.display = "block";
+    } else if (aba === "login") {
+        document.getElementById("login-section").style.display = "block";
+        document.getElementById("painel-titulo").style.display = "inline";
+    } else if (aba === "agenda") {
+        document.getElementById("agenda-section").style.display = "block";
+    } else if (aba === "config") {
+        document.getElementById("config-section").style.display = "block";
+    }
+}
+
+// Inicialmente mostra só a home
+window.onload = function() {
+    mostrarAba("home");
+};
+
+document.getElementById("btnHome").onclick = function() { mostrarAba("home"); };
+document.getElementById("btnCadastro").onclick = function() { mostrarAba("cadastro"); };
+document.getElementById("btnLogin").onclick = function() { mostrarAba("login"); };
+document.getElementById("btnAgenda").onclick = function() { mostrarAba("agenda"); };
+document.getElementById("btnConfig").onclick = function() { mostrarAba("config"); };
+
