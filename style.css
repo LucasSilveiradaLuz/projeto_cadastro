@@ -65,7 +65,7 @@ main {
 }
 
 .btn-padrao {
-  background-color: #2DBE3C;
+  background-color: #00B894; /* alterado para o novo verde */
   color: white;
   border: none;
   border-radius: 8px;
@@ -82,7 +82,7 @@ main {
 }
 
 .btn-padrao:hover {
-  background-color:  #00AEEF;
+  background-color: #00AEEF;
 }
 
 form {
