@@ -8,13 +8,12 @@
     <title>Cadastro</title>
 </head>
 <body>
- 
+  
     <main>
         <!-- Abas de navegação -->
         <!-- Abas de navegação + título do painel -->
     <div id="nav-bar" style="display: flex; align-items: center; gap: 20px;">
         <button id="btnHome" class="btn-padrao">Início</button>
-        <button id="btnCadastro" class="btn-padrao">Cadastro</button>
         <button id="btnLogin" class="btn-padrao">Pacientes</button>
         <button id="btnAgenda" class="btn-padrao">Agenda</button>
         <button id="btnConfig" class="btn-padrao">Config</button>
@@ -23,302 +22,245 @@
                    <div style=  "margin-bottom: 32px; text-align: center;">
         <span id="painel-titulo" style =  "display: none" >Pacientes</span>
     </div>
-
-    <!-- Aba Cadastro -->
-   
-
-        <style>
-  #logo {
-    display: block;
-    margin: 0 auto 24px auto;
-    position: static;
-    top: unset;
-    right: unset;
-}
-</style>
-
-        <!-- Aba Cadastro -->
-        <div id="cadastro-section">
-            <h1 id="form_titulo">Cadastro do paciente</h1>
-            <form id="form">
-                <div id="input_conteudo">
-
-                    <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-                            Primeiro nome
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="nome" class = "form-control" >
-
-                            <i class = "fa-regular fa-user"></i>
-
-                        </div>
-
-                        </div>
-
-                        <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-
-                             Sobrenome
-
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="sobrenome" class = "form-control" >
-
-                            <i class = "fa-regular fa-user"></i>
-
-                        </div>
-
-                        </div>
-
-                           <div class="input-caixa">
-
-                        <label for="dataDeNascimento" class="form_label">
-
-                             Data de Nascimento
-
-                        </label>
-                      
-
-                        <div class = "input-campo">
-
-                            <input type="date" id ="dataDeNascimento" class = "form-control" >
-                        </div>
-
-                        </div>
-                           <div class="input-caixa">
-                        <label for="name" class="form_label">
-                             CPF
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="number" id ="CPF" class = "form-control" >
-                        </div>
-                        </div>
-                       
-                     <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-
-                             Endereço
-
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="endereco" class = "form-control" >
-
-                          
-
-                        </div>
-
-                        </div>
-                         <div class="input-caixa">
-                        <label for="name" class="form_label">
-                             Telefone
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="number" id ="telefone" class = "form-control" >
-                        </div>
-                        </div>
-                        <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-                       Nome da mãe
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="nomeMae" class = "form-control" >
-
-                            <i class = "fa-regular fa-user"></i>
-
-                        </div>
-
-                        </div>
-
-                        <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-
-                             Procedimento
-
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="procedimento" class = "form-control" >
-
-                          
-
-                        </div>
-
-                        </div>
-                        <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-                            Enfermeiro(a)
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="responsavel" class = "form-control" >
-
-                            <i class = "fa-regular fa-user"></i>
-
-                        </div>
-
-                        </div>
-                             <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-                         Histórico de doenças
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="doencas" class = "form-control" >
-
-                       
-
-                        </div>
-
-                        </div>
-                                <div class="input-caixa">
-
-                        <label for="name" class="form_label">
-                        Medicações
-                        </label>
-
-                        <div class = "input-campo">
-
-                            <input type="text" id ="medicacao" class = "form-control" >
-
-
-                        </div>
-
-                        </div>
-
-                        <div class="radio">
-
-                          <label class="form_label">
-                            Gênero
-                          </label>
-
-                         <!-- Exemplo para o grupo Gênero -->
-    <div id="generoInput">
-      <div class="radio-caixa">
-        <input type="radio" id="feminino" name="genero" class="form-control" value="feminino">
-        <label for="feminino" class="form_label">Feminino</label>
-      </div>
-      <div class="radio-caixa">
-        <input type="radio" id="masculino" name="genero" class="form-control" value="masculino">
-        <label for="masculino" class="form_label">Masculino</label>
-      </div>
-      <div class="radio-caixa">
-        <input type="radio" id="outro" name="genero" class="form-control" value="outro">
-        <label for="outro" class="form_label">Outro</label>
-      </div>
-    </div>
-       </div>
-
-        <div class="radio">
-          <label class="form_label">Alergias:</label>
-          <div id="alergia">
-         
-          <input type="radio" id="alergiaNao" name="alergia" value="nao">
-          <label for="alergiaNao" class="form_label">Não</label>
-          <input type="radio" id="alergiaNaoSei" name="alergia" value="nao_sei">
-            <label for="alergiaNaoSei" class="form_label">Não sei</label>
-             <input type="radio" id="alergiaSim" name="alergia" value="sim">
-          <label for="alergiaSim" class="form_label">Sim</label>
-          <!-- Caixa de texto para detalhar alergia, escondida por padrão -->
-          <input type="text" id="alergiaDetalhe" class="form-control" style="display:none; margin-top:5px; padding: 10px;
-    border: black;
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);" >
-        </div>
-        </div>
-                   <div class="radio">
-      <label class="form_label">Prioridade de atendimento </label>
-      <div id="especificacaoInput">
-        
-           <input type="radio" id="nenhuma" name="prioridade" class="form-control" value="nenhuma">
-          <label for="nenhuma" class="form_label">Nenhuma    </label>
-      <input type="radio" id="gestante" name="prioridade" class="form-control" value="gestante">
-      <label for="gestante" class="form_label">Gestante  </label>
-     
-        
-          <input type="radio" id="neuroatipico" name="prioridade" class="form-control" value="neuroatipico">
-      <label for="neuroatipico" class="form_label">Neurodivergência  </label>
-      <input type="text" id="neuroatipicoDetalhe" class="form-control" style="display:none; margin-top:5px; padding: 10px;
-    border: black;
-    border-radius: 8px;
-    font-size: 14px;
-     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);" >
-        </div>
-      </div>
-
-      <div id = "sessentaMais">  
-        <label class="form_label">Especificações:</label>
-        <div class="radio-caixa">
-          <input type="radio" id="60mais" name="especificacao" class="form-control" value="60mais">
-          <label for="60mais" class="form_label">60 anos ou +</label>
-        </div>
-      </div>
-    </div>
-                </div>
-     
-                <div class="main" id = "resposta">
-                  <ul id = "ul">
-                    
-                  </ul>
-                </div>
-
-                <button type="submit" class="btn-padrao">
-                    <i class="fa-solid fa-check"></i>
-                    Enviar
-                </button>
-    
-            </form>
-            <div class="main" id="resposta">
-                <ul id="ul"></ul>
-            </div>
-        </div>
-                 <!-- Aba Painel (inicialmente oculta) -->
+                 <!-- Aba Pacientes -->
                   <div id="login-section" style="display: none;">
                       <!-- TÍTULO DO PAINEL -->
-  
-                      <form id="login-form">
-                          <!-- ...seu formulário de login, se houver... -->
-            </form>
-  
-            <div id="resposta-login"></div>
-        </div>
 
-        <!-- Aba Relatórios (inicialmente oculta) -->
+                      <button id="btnAdicionarPaciente" class="btn-padrao">Adicionar Pacientes</button>
+
+                      <div id="pacientes-lista">
+                          <h2>Lista de Pacientes</h2>
+                          <ul id="pacientes-ul"></ul>
+                      </div>
+
+                      <!-- Modal para adicionar paciente -->
+                      <div id="modal-adicionar-paciente" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+                          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 600px; width: 90%; max-height: 80%; overflow-y: auto;">
+                              <h2>Adicionar Paciente</h2>
+                              <form id="form-paciente">
+                                  <div id="input_conteudo">
+
+                                      <div class="input-caixa">
+                                          <label for="nome" class="form_label">Primeiro nome</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="nome" class="form-control">
+                                              <i class="fa-regular fa-user"></i>
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="sobrenome" class="form_label">Sobrenome</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="sobrenome" class="form-control">
+                                              <i class="fa-regular fa-user"></i>
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="dataDeNascimento" class="form_label">Data de Nascimento</label>
+                                          <div class="input-campo">
+                                              <input type="date" id="dataDeNascimento" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="CPF" class="form_label">CPF</label>
+                                          <div class="input-campo">
+                                              <input type="number" id="CPF" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="endereco" class="form_label">Endereço</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="endereco" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="telefone" class="form_label">Telefone</label>
+                                          <div class="input-campo">
+                                              <input type="number" id="telefone" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="nomeMae" class="form_label">Nome da mãe</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="nomeMae" class="form-control">
+                                              <i class="fa-regular fa-user"></i>
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="procedimento" class="form_label">Procedimento</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="procedimento" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="responsavel" class="form_label">Enfermeiro(a)</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="responsavel" class="form-control">
+                                              <i class="fa-regular fa-user"></i>
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="doencas" class="form_label">Histórico de doenças</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="doencas" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="input-caixa">
+                                          <label for="medicacao" class="form_label">Medicações</label>
+                                          <div class="input-campo">
+                                              <input type="text" id="medicacao" class="form-control">
+                                          </div>
+                                      </div>
+
+                                      <div class="radio">
+                                          <label class="form_label">Gênero</label>
+                                          <div id="generoInput">
+                                              <div class="radio-caixa">
+                                                  <input type="radio" id="feminino" name="genero" class="form-control" value="feminino">
+                                                  <label for="feminino" class="form_label">Feminino</label>
+                                              </div>
+                                              <div class="radio-caixa">
+                                                  <input type="radio" id="masculino" name="genero" class="form-control" value="masculino">
+                                                  <label for="masculino" class="form_label">Masculino</label>
+                                              </div>
+                                              <div class="radio-caixa">
+                                                  <input type="radio" id="outro" name="genero" class="form-control" value="outro">
+                                                  <label for="outro" class="form_label">Outro</label>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="radio">
+                                          <label class="form_label">Alergias:</label>
+                                          <div id="alergia">
+                                              <input type="radio" id="alergiaNao" name="alergia" value="nao">
+                                              <label for="alergiaNao" class="form_label">Não</label>
+                                              <input type="radio" id="alergiaNaoSei" name="alergia" value="nao_sei">
+                                              <label for="alergiaNaoSei" class="form_label">Não sei</label>
+                                              <input type="radio" id="alergiaSim" name="alergia" value="sim">
+                                              <label for="alergiaSim" class="form_label">Sim</label>
+                                              <input type="text" id="alergiaDetalhe" class="form-control" style="display:none; margin-top:5px; padding: 10px; border: black; border-radius: 8px; font-size: 14px; box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                                          </div>
+                                      </div>
+
+                                      <div class="radio">
+                                          <label class="form_label">Prioridade de atendimento</label>
+                                          <div id="especificacaoInput">
+                                              <input type="radio" id="nenhuma" name="prioridade" class="form-control" value="nenhuma">
+                                              <label for="nenhuma" class="form_label">Nenhuma</label>
+                                              <input type="radio" id="gestante" name="prioridade" class="form-control" value="gestante">
+                                              <label for="gestante" class="form_label">Gestante</label>
+                                              <input type="radio" id="neuroatipico" name="prioridade" class="form-control" value="neuroatipico">
+                                              <label for="neuroatipico" class="form_label">Neurodivergência</label>
+                                              <input type="text" id="neuroatipicoDetalhe" class="form-control" style="display:none; margin-top:5px; padding: 10px; border: black; border-radius: 8px; font-size: 14px; box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                                          </div>
+                                      </div>
+
+                                      <div id="sessentaMais">
+                                          <label class="form_label">Especificações:</label>
+                                          <div class="radio-caixa">
+                                              <input type="radio" id="60mais" name="especificacao" class="form-control" value="60mais">
+                                              <label for="60mais" class="form_label">60 anos ou +</label>
+                                          </div>
+                                      </div>
+
+                                  </div>
+
+                                  <button type="submit" class="btn-padrao">
+                                      <i class="fa-solid fa-check"></i>
+                                      Enviar
+                                  </button>
+                                  <button type="button" id="btnFecharModal" class="btn-padrao">Fechar</button>
+                              </form>
+                          </div>
+                      </div>
+
+                      <div id="resposta-login"></div>
+                  </div>
+
+                  <!-- Modal para ver detalhes do paciente -->
+                  <div id="modal-ver-paciente" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+                      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 600px; width: 90%; max-height: 80%; overflow-y: auto;">
+                          <h2>Detalhes do Paciente</h2>
+                          <div id="detalhes-paciente"></div>
+                          <button type="button" id="btnFecharVerModal" class="btn-padrao">Fechar</button>
+                      </div>
+                  </div>
+
+                  <!-- Modal para novo cuidado -->
+                  <div id="modal-novo-cuidado" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+                      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 400px; width: 90%; max-height: 80%; overflow-y: auto;">
+                          <h2>Novo cuidado para o paciente</h2>
+                          <p id="nome-paciente-cuidado"></p>
+                          <div id="opcoes-cuidado">
+                              <h3>Selecione os tipos de cuidado:</h3>
+                              <label><input type="checkbox" id="medicacao" name="cuidado"> Medicação</label><br>
+                              <label><input type="checkbox" id="banho-leito" name="cuidado"> Banho de leito</label><br>
+                              <label><input type="checkbox" id="hidratacao" name="cuidado"> Hidratação</label><br>
+                              <label><input type="checkbox" id="mudanca-decubito" name="cuidado"> Mudança de decúbito</label><br>
+                          </div>
+
+                          <div class="input-caixa">
+                              <label for="observacoes-cuidado" class="form_label">Observações</label>
+                              <textarea id="observacoes-cuidado" class="form-control" rows="3" placeholder="Digite observações sobre o cuidado..."></textarea>
+                          </div>
+
+                          <div class="input-caixa">
+                              <label for="data-cuidado" class="form_label">Data do cuidado</label>
+                              <div class="input-campo">
+                                  <input type="date" id="data-cuidado" class="form-control">
+                              </div>
+                          </div>
+
+                          <div class="input-caixa">
+                              <label for="hora-cuidado" class="form_label">Horário</label>
+                              <div class="input-campo">
+                                  <input type="time" id="hora-cuidado" class="form-control">
+                              </div>
+                          </div>
+                          <button type="button" id="btnSalvarCuidado" class="btn-padrao">Salvar</button>
+                          <button type="button" id="btnFecharCuidadoModal" class="btn-padrao">Fechar</button>
+                      </div>
+                  </div>
+
+                  <!-- Modal para histórico de cuidados -->
+                  <div id="modal-historico-cuidado" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+                      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 800px; width: 90%; max-height: 80%; overflow-y: auto;">
+                          <h2>Histórico de Cuidados</h2>
+                          <p id="nome-paciente-historico"></p>
+                          <div id="historico-cuidados-lista"></div>
+                          <button type="button" id="btnFecharHistoricoModal" class="btn-padrao">Fechar</button>
+                      </div>
+                  </div>
+
+        <!-- Aba Agenda -->
 <div id="agenda-section" style="display: none;">
-    <h1 id="agenda-titulo">Agenda</h1>
-    <!-- Conteúdo da agenda aqui -->
+    <h1 id="agenda-titulo">Agenda de Cuidados</h1>
+    <div id="agenda-lista">
+        <!-- Lista de pacientes com cuidados será carregada aqui -->
+    </div>
 </div>
 
 <!-- Aba Configurações (inicialmente oculta) -->
 <div id="config-section" style="display: none;">
     <h1 id="config-titulo">Configurações</h1>
-    <!-- Conteúdo de configurações aqui -->
+    <p>Gerencie as configurações do seu aplicativo e das pulseiras.</p>
+    <button class="btn-padrao">
+        <i class="fa-solid fa-plus"></i>
+        Parear Nova Pulseira
+    </button>
 </div>
 <div id="home-section">
-    <img src="img/sensecare-removebg-preview.png" id="logo" alt="Logo SenseCare" width="80" height="80" style="margin-bottom: 16px;">
+    <img src="sensecare-removebg-preview.png" id="logo" alt="Logo SenseCare" width="80" height="80" style="margin-bottom: 16px;">
     <div class="home-header">
         <div class="home-avatar"></div>
         
@@ -331,13 +273,15 @@
         <div class="home-resumo-titulo">Resumo</div>
         <div class="home-resumo-item">
             <i class="fa-solid fa-heart-pulse" style="color:#00B894;"></i>
-            Você tem <strong>3 pacientes</strong>
-            <span class="home-resumo-seta">&gt;</span>
+            Você tem <strong id="pacientes-count">3</strong> pacientes
+            <button id="btnVerPacientes" class="btn-padrao" style= "margin-left: 8px; padding: 6px 12px; font-size: 12px; vertical-align: top ">Ver Pacientes</button>
+            
         </div>
         <div class="home-resumo-item">
             <i class="fa-solid fa-bell" style="color:#00B894;"></i>
-            <strong>4 alertas pendentes</strong>
-            <span class="home-resumo-seta">&gt;</span>
+            <strong>alertas pendentes</strong>
+            <button id="btnVerAlertas" class="btn-padrao" style="background: #28a745; color: white; margin-left: 8px; padding: 6px 12px; font-size: 12px; vertical-align: top;">Ver Alertas</button>
+
         </div>
     </div>
     <div class="home-acesso-titulo">Botões de acesso rápido</div>
@@ -354,9 +298,11 @@
             <i class="fa-solid fa-bell"></i><br>
             Histórico de Alertas
         </button>
+        
+
     </div>
 </div>
     </main>
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>

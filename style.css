@@ -15,7 +15,7 @@ body {
   background-color: 
   #00AEEF;
     min-height: 100%; 
-    background-image: url('img/enfermagemFundo.png'); 
+    background-image: url('enfermagemFundo.png'); 
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
@@ -332,5 +332,124 @@ input[type="radio"] {
 }
 
 .home-acesso-btn:hover {
+    background: linear-gradient(135deg, #00AEEF 80%, #00B894 100%);
+}
+
+#config-titulo {
+    font-weight: 500;
+    color: #272727;
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+#config-titulo::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    border-radius: 30px;
+    background-color: #2DBE3C;
+    bottom: -4px;
+    left: 0;
+}
+
+.config-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.config-avatar {
+    width: 48px;
+    height: 48px;
+    background: #e0e0e0;
+    color: #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.config-boasvindas {
+    font-size: 0.95rem;
+    color: #888;
+}
+
+.config-ola {
+    font-size: 1.15rem;
+    color: #222;
+}
+
+.config-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 18px 20px;
+    margin-bottom: 22px;
+}
+
+.config-resumo-titulo {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.config-resumo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    margin-bottom: 7px;
+    color: #444;
+}
+
+.config-resumo-seta {
+    margin-left: auto;
+    color: #00B894;
+    font-weight: bold;
+}
+
+.config-acesso-titulo {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.config-acesso-rapido {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.config-acesso-btn {
+    background: linear-gradient(135deg, #00B894 80%, #00AEEF 100%);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 10px 10px 10px;
+    width: 110px;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.config-acesso-btn i {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.config-acesso-btn:hover {
     background: linear-gradient(135deg, #00AEEF 80%, #00B894 100%);
 }
