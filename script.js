@@ -30,6 +30,43 @@ function atualizarContadorPacientes() {
     }
 }
 
+function enviaFormulario() {
+  let CIP = document.getElementById("CIP").value;
+  let senha = document.getElementById("senha").value;
+  
+  let CIPsValidos = ["123456", "654321", "321456"];
+  let senhasValidas = ["1234", "6543", "3214"];
+  
+  let acessoPermitido = false;
+  var i
+  for (i = 0; i < CIPsValidos.length; i++) {
+    if (CIP === CIPsValidos[i] && senha === senhasValidas[i]) {
+      acessoPermitido = true;
+      break;
+    }
+  }
+if(acessoPermitido == true){
+  if (i === 0) {
+    localStorage.setItem("enfermeiroNome", "Rafael");
+    alert("Bem Vindo De Volta Rafael!");
+
+  }
+  if (i === 1) {
+    localStorage.setItem("enfermeiroNome", "Lucas");
+    alert("Bem Vindo De Volta Lucas!");
+  }
+  if (i === 2) {
+    localStorage.setItem("enfermeiroNome", "Diogo");
+    alert("Bem Vindo De Volta Diogo!");
+  }
+  window.location.href = "http://127.0.0.1:5500/index.html"
+}
+else{
+  alert("CIP ou Senha Incorreto!")
+}
+
+}
+
 // Função para atualizar contador de alertas pendentes na home
 function atualizarContadorAlertas() {
     const cuidados = JSON.parse(localStorage.getItem("cuidados")) || [];
@@ -592,7 +629,6 @@ const cadastro = {
     // ^ início da string
     // \d{13} 13 dígitos 
     // $ fim da string 
-    
   }
    if (!mae) {
     alert("Digite o nome da mãe corretamente.");
@@ -776,4 +812,9 @@ document.getElementById("btnVerPacientes").onclick = function() {
 // Event listener para o botão "Ver Alertas" na home
 document.getElementById("btnVerAlertas").onclick = function() {
     mostrarAba("agenda");
+};
+
+// Botão Voltar retorna para a página de login
+document.getElementById("btnVoltar").onclick = function() {
+    window.location.href = "LoginEnfermeiro.html";
 };
