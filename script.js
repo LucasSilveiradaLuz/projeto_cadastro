@@ -255,18 +255,18 @@ function salvarCuidado() {
         }
     }
 
-    // Validation: at least one care type must be selected
+    // validação: pelo menos um cuidado deve ser selecionado
     if (selectedCares.length === 0) {
         alert("Selecione pelo menos um tipo de cuidado.");
         return;
     }
 
-    // Get additional fields
+    // campos adicionais
     const observacoes = document.getElementById("observacoes-cuidado").value.trim();
     const dataCuidado = document.getElementById("data-cuidado").value;
     const horaCuidado = document.getElementById("hora-cuidado").value;
 
-    // Validation: date and time are required
+    // Validação data e tempo são requiridos
     if (!dataCuidado) {
         alert("Selecione a data do cuidado.");
         return;
@@ -405,8 +405,8 @@ function mostrarCuidadoIndividual(cuidadoIndex) {
         return;
     }
 
-    const cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
-    const cadastro = cadastros[parseInt(cuidado.pacienteIndex)];
+ 
+    
 
     const dataFormatada = new Date(cuidado.dataCuidado + 'T' + cuidado.horaCuidado).toLocaleString('pt-BR');
 
@@ -456,7 +456,7 @@ function removerPaciente(index) {
     // Remove patient from cadastros
     cadastros.splice(index, 1);
 
-    // Remove all care records for this patient
+    // remove todos os cuidados para este paciente
     const cuidados = JSON.parse(localStorage.getItem("cuidados")) || [];
     const cuidadosFiltrados = cuidados.filter(cuidado => parseInt(cuidado.pacienteIndex) !== index);
     localStorage.setItem("cuidados", JSON.stringify(cuidadosFiltrados));
@@ -473,7 +473,7 @@ function removerPaciente(index) {
     });
     localStorage.setItem("statusCuidados", JSON.stringify(statusCuidados));
 
-    // Update indices for remaining care records
+    // Atualiza indíce para novos cuidados
     const cuidadosAtualizados = cuidadosFiltrados.map(cuidado => {
         if (parseInt(cuidado.pacienteIndex) > index) {
             return { ...cuidado, pacienteIndex: (parseInt(cuidado.pacienteIndex) - 1).toString() };
