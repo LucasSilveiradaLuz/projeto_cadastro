@@ -213,7 +213,7 @@ function salvarCuidado() {
         }
     });
 
-    // If no checkboxes found, try alternative approach
+    // Se nenhuma checkbox for selecionada, tentar outra coisa
     if (selectedCares.length === 0) {
         const modal = document.getElementById("modal-novo-cuidado");
         if (modal) {
@@ -235,7 +235,7 @@ function salvarCuidado() {
         }
     }
 
-    // Additional fallback: look for any checked checkbox in the modal
+    // Perceber qualquer checkbox que for selecionada
     if (selectedCares.length === 0) {
         const modal = document.getElementById("modal-novo-cuidado");
         if (modal) {
@@ -276,7 +276,7 @@ function salvarCuidado() {
         return;
     }
 
-    // Get patient data
+    // Pegar a data do paciente 
     const cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
     const cadastro = cadastros[parseInt(patientIndex)];
     if (!cadastro) {
@@ -284,7 +284,7 @@ function salvarCuidado() {
         return;
     }
 
-    // Create care record
+    // Criar histórico de cuidados
     const cuidado = {
         pacienteNome: `${cadastro.nome} ${cadastro.sobrenome}`,
         tiposCuidado: selectedCares,
@@ -295,16 +295,16 @@ function salvarCuidado() {
         pacienteIndex: parseInt(patientIndex)
     };
 
-    // Store care records
+    //guardar cuidados com local storage
     const cuidados = JSON.parse(localStorage.getItem("cuidados")) || [];
     cuidados.push(cuidado);
     localStorage.setItem("cuidados", JSON.stringify(cuidados));
 
-    // Close modal and show success message
+    // FECHAR MODELO E MOSTRAR MENSAGEM DE SUCESSO
     modal.style.display = "none";
     alert("Cuidado registrado com sucesso!");
 
-    // Refresh agenda if it's currently visible
+    // recarregar agenda, se ainda está visível
     if (document.getElementById("agenda-section").style.display === "block") {
         carregarAgenda();
     }
